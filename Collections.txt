@@ -1,0 +1,131 @@
+//Simple Dart Programs on List and Hast Collection of Dart.
+----------------------------------------------------------------------------------------
+//Q1.Create a list of names and print all names using list.
+void main(){
+  List<String> list = ["Shreyash" ,"Vijay" , "Prashant", "Yogesh"];
+  print(list);
+}
+---------------------------------------------------------------------------------------
+//Q2.Create a set of fruits and print all fruits using loop.
+void main(){
+  List<String> fruit =["Apple","Banana","Kiwi","Pineapple","Orange"];
+  for(String name in fruit)
+    {
+      print(name);
+    }
+}
+--------------------------------------------------------------------------------------
+//Q3.Create an empty list of type string called days. Use the add method to add names of
+7 days and print all days.
+void main()
+{
+  List<String> days =[];
+  days.add("Sunday");
+  days.add("Monday");
+  days.add("Tuesday");
+  days.add("Wednesday");
+  days.add("Thursday");
+  days.add("Friday");
+  days.add("Saturday");
+
+  for(String name in days)
+    {
+      print(name);
+    }
+}
+--------------------------------------------------------------------------------------
+//Q4.Add your 7 friend names to the list. Use where to find a name that starts with
+alphabet a.
+void main(){
+  List<String> friendName = ["Ajay", "Shreyash", "Atul", "Pranav", "Shardul", "Aparna","Soham"];
+
+  List<String> nameWithA = friendName.where((element)=> element.startsWith("A")).toList();
+
+  print(nameWithA);
+}
+--------------------------------------------------------------------------------------------------------
+//Q5.Create a map with name, address, age, country keys and store values to it. Update
+country name to other country and print all keys and values.
+void main()
+{
+  Map mymap = {"Name":"Shreyash", "Address": "123 Sangli", "age": "22", "Country": "USA"};
+  mymap["Country"] = "India";
+  print(mymap);
+}
+--------------------------------------------------------------------------------------------------------
+//Q6.Create a map with name, phone keys and store some values to it. Use where to find
+all keys that have length 4.
+void main()
+{
+  Map map1 = {"name": "Shreyash Magdum", "phone": 123456789};
+  if(map1.length == 4){
+    print(map1);
+  }
+  else{
+    print("your value have not length 4");
+  }
+
+}
+--------------------------------------------------------------------------------------------------------
+//Q7.Create a simple to-do application that allows user to add, remove, and view their
+task.
+import 'dart:io';
+
+
+void main()
+{
+  List<String> tasks = [];
+  while(true)
+    {
+      print("Enter a valid option: ");
+      print("1.Create a task \n2.Delete a task \n3.Check the list \n4.Exit");
+      String choice = stdin.readLineSync()!;
+      switch(choice){
+          case '1':
+            print("Enter a task :");
+            String task = stdin.readLineSync()!;
+            tasks.add(task);
+            if(tasks.isNotEmpty)
+              print("The task successfully added.");
+            else
+              print("Failed to add task.");
+            break;
+
+          case '2':
+            if(tasks.isEmpty)
+              print("There are no tasks.");
+            else
+              print("Select the number of a task to remove: ");
+              for(int i=0 ;i<tasks.length; i++)
+                {
+                  print("${i+1}. ${tasks[i]}");
+                }
+              int num =int.parse(stdin.readLineSync()!);
+              if(num>=0 && num<=tasks.length)
+                {
+                  tasks.removeAt(num);
+                  print("Task removed Successfully.");
+                }
+              else
+                print("Invalid task number.");
+              break;
+
+        case '3':
+          if(tasks.isEmpty)
+            print("There are no tasks present at this time.You can add it.");
+          else
+            for(int i=0 ;i<tasks.length; i++)
+            {
+              print("${i+1}. ${tasks[i]}");
+            }
+          break;
+
+        case '4':
+          print("Thank you");
+          return;
+        default :
+          print("ERROR404!! Please enter a valid option number.");
+      }
+    }
+}
+---------------------------------------------------------------------------------------------------------------
